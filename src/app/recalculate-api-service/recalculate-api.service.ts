@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 import { ItemModel } from '../form-state/model';
 
-const MOCK_API_DELAY_MS = 300;
+const MOCK_API_DELAY_MS = 50;
 
 @Injectable({
   providedIn: 'root'

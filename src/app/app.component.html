@@ -5,11 +5,17 @@
 </div>
 
 <h3>Document editor</h3>
-
 <ng-container *ngIf="formState$ | async as formState">
+  <div>
+
+  </div>
 
   <div id="document-editor">
     <dx-text-box label="Document nr." [ngrxFormControlState]="formState.controls.documentNumber"></dx-text-box>
+
+    <div class="recalc-indicator">
+      <dx-load-indicator [visible]="recalculationInProgress$ | async"></dx-load-indicator>
+    </div>
 
     <app-simple-items [formState]="formState.controls.items"></app-simple-items>
   </div>

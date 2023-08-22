@@ -6,7 +6,7 @@ import { getEmptyDocument } from './model-mock-factories';
 import { recalculateActions } from './recalculate-actions';
 import { RecalculationRow } from '../recalculate-api-service/recalculate-api.service';
 
-const FORM_ID = 'DocumentForm';
+export const FORM_ID = 'DocumentForm';
 
 // ------------------ FORM STATE ------------------
 export interface DocumentFormState {
@@ -73,9 +73,10 @@ export const documentReducer = createReducer(
       // we create new state using old one and setting value to items ArrayControlState
       return {
         ...state,
+        recalculateInProgress: false,
         documentFormState: formStateReducer(
           state.documentFormState,
-          new SetValueAction('testForm.items', newItems)
+          new SetValueAction( FORM_ID + '.items', newItems)
         )
       };
     }

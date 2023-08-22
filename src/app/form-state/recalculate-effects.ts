@@ -24,7 +24,7 @@ export class RecalculateEffects {
 
   readonly recalculateRowsTrigger$ = createEffect(() => this.actions$.pipe(
     ofType(SetValueAction.TYPE),
-    filter((action: SetValueAction<any>) => /testForm\.items\.\d+\.(price|amount|totalPrice)$/.test(action.controlId)),
+    filter((action: SetValueAction<any>) => /DocumentForm\.items\.\d+\.(price|amount|totalPrice)$/.test(action.controlId)),
     this.setRecalculationInProgress(),
     debounceTime(300),
     concatLatestFrom(() => this.store.select(itemsFormStateSelector)),

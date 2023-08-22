@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { DxButtonModule, DxLoadPanelModule, DxTextBoxModule } from 'devextreme-angular';
+import { DxButtonModule, DxLoadIndicatorModule, DxLoadPanelModule, DxTextBoxModule } from 'devextreme-angular';
 import { FormGroupState, NgrxFormsModule } from 'ngrx-forms';
 import { Observable } from 'rxjs';
 import { appComponentActions } from './form-state/app-component-actions';
@@ -19,13 +19,14 @@ import { SimpleItemsComponent } from './items/simple-items/simple-items.componen
     DxTextBoxModule,
     NgrxFormsModule,
     SimpleItemsComponent,
-    DxLoadPanelModule
+    DxLoadPanelModule,
+    DxLoadIndicatorModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   protected formState$: Observable<FormGroupState<DocumentModel>>;
 
@@ -38,6 +39,10 @@ export class AppComponent {
     this.formState$ = store.select(documentFormStateSelector);
     this.recalculationInProgress$ = store.select(recalculateInProgressSelector);
     this.loadInProgress$ = store.select(loadInProgressSelector);
+  }
+
+  ngOnInit(): void {
+    this.loadDocumentById(1);
   }
 
   loadEmptyDocument(): void {

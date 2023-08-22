@@ -3,6 +3,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AppComponentEffects } from './form-state/app-component-effects';
+import { RecalculateEffects } from './form-state/recalculate-effects';
 import { documentReducer } from './form-state/state';
 
 export const appConfig: ApplicationConfig = {
@@ -12,7 +13,8 @@ export const appConfig: ApplicationConfig = {
     }),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideEffects([
-      AppComponentEffects
+      AppComponentEffects,
+      RecalculateEffects,
     ])
   ]
 };
