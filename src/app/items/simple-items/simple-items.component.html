@@ -1,0 +1,7 @@
+<h3>Simple items editor</h3>
+
+<ng-container *ngFor="let item of formState.controls; trackBy: itemIdentity; let i = index">
+  <div>
+    <pre> {{ item.value }} </pre>
+  </div>
+</ng-container>

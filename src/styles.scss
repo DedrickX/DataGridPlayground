@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@use "devextreme/scss/widgets/generic/colors" with ($color: "light");
+@use "devextreme/scss/widgets/generic/sizes" with ($size: "default");
+@use "devextreme/scss/widgets/generic/typography";
+@use "devextreme/scss/widgets/generic/icons";
+@use "devextreme/scss/widgets/generic/widget";
+@use "devextreme/scss/widgets/generic/card";
+@use "devextreme/scss/widgets/generic/fieldset";
+@use "devextreme/scss/widgets/generic/common";
+@use "devextreme/scss/widgets/base/resizable";
+@use "devextreme/scss/widgets/base/draggable";
+@use "devextreme/scss/widgets/base/ui";
+
+@use "devextreme/scss/widgets/generic/button";
+@use "devextreme/scss/widgets/generic/dataGrid";
+@use "devextreme/scss/widgets/generic/loadPanel";
