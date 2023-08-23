@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { DxDataGridModule } from 'devextreme-angular';
@@ -16,7 +16,7 @@ import { FORM_ID } from '../../form-state/state';
   templateUrl: './data-grid-form-items.component.html',
   styleUrls: ['./data-grid-form-items.component.scss']
 })
-export class DataGridFormItemsComponent {
+export class DataGridFormItemsComponent implements OnChanges {
 
   @Input() formState: FormArrayState<ItemModel>;
 

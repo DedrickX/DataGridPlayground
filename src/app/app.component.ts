@@ -14,10 +14,13 @@ import { appComponentActions } from './form-state/app-component-actions';
 import { DocumentModel } from './form-state/model';
 import { documentFormStateSelector, loadInProgressSelector, recalculateInProgressSelector } from './form-state/state';
 import { DataGridFormItemsComponent } from './items/data-grid-form-items/data-grid-form-items.component';
+import {
+  DataGridInternalRecalcItemsComponent
+} from './items/data-grid-internal-recalc-items/data-grid-internal-recalc-items.component';
 import { DataGridItemsComponent } from './items/data-grid-items/data-grid-items.component';
 import { SimpleItemsComponent } from './items/simple-items/simple-items.component';
 
-type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form';
+type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form' | 'dx-internal-recalc';
 
 @Component({
   selector: 'app-root',
@@ -31,6 +34,7 @@ type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form';
     SimpleItemsComponent,
     DataGridItemsComponent,
     DataGridFormItemsComponent,
+    DataGridInternalRecalcItemsComponent,
     DxSelectBoxModule,
     DxLoadPanelModule,
     DxLoadIndicatorModule,
@@ -46,12 +50,13 @@ export class AppComponent implements OnInit {
   protected recalculationInProgress$: Observable<boolean>;
   protected loadInProgress$: Observable<boolean>;
 
-  protected currentItemsEditorVariant: ItemsEditorVariants = 'dx-form';
+  protected currentItemsEditorVariant: ItemsEditorVariants = 'dx-internal-recalc';
 
   protected itemsEditorVariants: { value: ItemsEditorVariants, text: string }[] = [
     { value: 'simple', text: 'Simple *ngFor and table' },
     { value: 'dx-cell', text: 'DxDataGrid, edit mode cell' },
     { value: 'dx-form', text: 'DxDataGrid, edit mode form' },
+    { value: 'dx-internal-recalc', text: 'DxDataGrid, recalc logic in grid rows' },
   ];
 
   constructor(
