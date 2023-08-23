@@ -1,15 +1,12 @@
-<h3>Load document</h3>
+<h2>Load document</h2>
 <div class="loaders">
   <dx-button type="default" text="Empty document" (onClick)="loadEmptyDocument()"></dx-button>
-  <dx-button type="default" text="Document 1" (onClick)="loadDocumentById(1)"></dx-button>
+  <dx-button type="default" text="Small document" (onClick)="loadDocumentById(1)"></dx-button>
+  <dx-button type="default" text="Large document" (onClick)="loadDocumentById(2)"></dx-button>
 </div>
 
-<h3>Document editor</h3>
+<h2>Document editor</h2>
 <ng-container *ngIf="formState$ | async as formState">
-  <div>
-
-  </div>
-
   <div id="document-editor">
     <dx-text-box label="Document nr." [ngrxFormControlState]="formState.controls.documentNumber"></dx-text-box>
 
@@ -17,10 +14,28 @@
       <dx-load-indicator [visible]="recalculationInProgress$ | async"></dx-load-indicator>
     </div>
 
-    <app-simple-items [formState]="formState.controls.items"></app-simple-items>
+    <h3>Items editor</h3>
+    <dx-select-box label="Items editor variant"
+                   [(value)]="currentItemsEditorVariant"
+                   [items]="itemsEditorVariants"
+                   [hoverStateEnabled]="true"
+                    displayExpr="text"
+                    valueExpr="value"
+                   [width]="300">
+    </dx-select-box>
+
+    <div class="items-editor-container">
+      <app-simple-items *ngIf="currentItemsEditorVariant === 'simple'"
+                        [formState]="formState.controls.items">
+      </app-simple-items>
+
+      <app-data-grid-items *ngIf="currentItemsEditorVariant === 'dx'"
+                           [formState]="formState.controls.items">
+      </app-data-grid-items>
+    </div>
   </div>
 
-  <h3>NgRx Form state</h3>
+  <h2>NgRx Form state</h2>
   <pre>{{ formState.value | json }}</pre>
 </ng-container>
 

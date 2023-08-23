@@ -19,7 +19,7 @@ export class DocumentApiService {
   }
 
   public loadDocumentById(id: number): Observable<DocumentModel> {
-    return of(getMockDocument()).pipe(
+    return of(getMockDocument(id)).pipe(
       delay(MOCK_API_DELAY_MS),
     );
   }

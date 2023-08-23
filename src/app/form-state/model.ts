@@ -5,6 +5,7 @@ export interface DocumentModel {
 
 export interface ItemModel {
   id: number;
+  ordinal: number;
   name: string;
   price: number;
   amount: number;

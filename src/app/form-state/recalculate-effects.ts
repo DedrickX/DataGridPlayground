@@ -43,6 +43,11 @@ export class RecalculateEffects {
     }))
   );
 
+  readonly recalculationDone$ = createEffect(() => this.actions$.pipe(
+    ofType(recalculateActions.recalculateRowsResult),
+    map(() => recalculateActions.setRecalculationProgress({ inProgress: false }))
+  ));
+
   // --------------------
   // side effect operator for setting calculation progress by dispatching action to set it true, but if it is not already true
   // it returns MonoTypeOperatorFunction, so it can be used within pipe, and it will preserve type of stream

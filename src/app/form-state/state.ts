@@ -73,7 +73,6 @@ export const documentReducer = createReducer(
       // we create new state using old one and setting value to items ArrayControlState
       return {
         ...state,
-        recalculateInProgress: false,
         documentFormState: formStateReducer(
           state.documentFormState,
           new SetValueAction( FORM_ID + '.items', newItems)

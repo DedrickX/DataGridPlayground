@@ -1,7 +1,6 @@
-<h3>Simple items editor</h3>
-
 <table>
   <tr class="header">
+    <th>#</th>
     <th>Name</th>
     <th>Price</th>
     <th>Amount</th>
@@ -9,19 +8,15 @@
   </tr>
   <ng-container *ngFor="let item of formState.controls; trackBy: itemIdentity; let i = index">
     <tr>
+      <td>{{ item.controls.ordinal.value }}</td>
       <td><dx-text-box [ngrxFormControlState]="item.controls.name"></dx-text-box></td>
       <td><dx-number-box [ngrxFormControlState]="item.controls.price"></dx-number-box></td>
       <td><dx-number-box [ngrxFormControlState]="item.controls.amount"></dx-number-box></td>
       <td><dx-number-box [ngrxFormControlState]="item.controls.totalPrice"></dx-number-box></td>
     </tr>
-    <tr class="description">
+    <tr>
+      <td></td>
       <td colSpan="4"><dx-text-box [ngrxFormControlState]="item.controls.description"></dx-text-box></td>
     </tr>
   </ng-container>
 </table>
-
-<!--<ng-container *ngFor="let item of formState.controls; trackBy: itemIdentity; let i = index">-->
-<!--  <div>-->
-<!--    <pre> {{ item.value }} </pre>-->
-<!--  </div>-->
-<!--</ng-container>-->
