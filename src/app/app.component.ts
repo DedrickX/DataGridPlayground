@@ -45,8 +45,8 @@ export class AppComponent implements OnInit {
   protected currentItemsEditorVariant: 'simple' | 'dx' = 'dx';
 
   protected itemsEditorVariants: { value: 'simple' | 'dx', text: string }[] = [
-    { value: 'simple', text: 'Simple *ngFor and <table>' },
-    { value: 'dx', text: 'DevExtreme DataGrid' },
+    { value: 'simple', text: 'Simple *ngFor and table' },
+    { value: 'dx', text: 'DxDataGrid, edit mode cell' },
   ];
 
   constructor(

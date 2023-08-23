@@ -2,21 +2,21 @@
   <tr class="header">
     <th>#</th>
     <th>Name</th>
-    <th>Price</th>
+    <th>Unit price</th>
     <th>Amount</th>
     <th>Total price</th>
   </tr>
   <ng-container *ngFor="let item of formState.controls; trackBy: itemIdentity; let i = index">
     <tr>
-      <td>{{ item.controls.ordinal.value }}</td>
-      <td><dx-text-box [ngrxFormControlState]="item.controls.name"></dx-text-box></td>
-      <td><dx-number-box [ngrxFormControlState]="item.controls.price"></dx-number-box></td>
-      <td><dx-number-box [ngrxFormControlState]="item.controls.amount"></dx-number-box></td>
-      <td><dx-number-box [ngrxFormControlState]="item.controls.totalPrice"></dx-number-box></td>
+      <td><strong>{{ item.controls.ordinal.value }}</strong></td>
+      <td><dx-text-box label="Name" [ngrxFormControlState]="item.controls.name"></dx-text-box></td>
+      <td><dx-number-box label="Unit price" [ngrxFormControlState]="item.controls.price"></dx-number-box></td>
+      <td><dx-number-box label="Amount" [ngrxFormControlState]="item.controls.amount"></dx-number-box></td>
+      <td><dx-number-box label="Total price" [ngrxFormControlState]="item.controls.totalPrice"></dx-number-box></td>
     </tr>
     <tr>
       <td></td>
-      <td colSpan="4"><dx-text-box [ngrxFormControlState]="item.controls.description"></dx-text-box></td>
+      <td colSpan="4"><dx-text-box label="Description" [ngrxFormControlState]="item.controls.description"></dx-text-box></td>
     </tr>
   </ng-container>
 </table>

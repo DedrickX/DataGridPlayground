@@ -4,7 +4,7 @@
 }
 
 #document-editor {
-  border: 2px solid grey;
+  border: 3px solid grey;
   padding: 20px;
 }
 
@@ -12,12 +12,11 @@ pre {
   color: royalblue;
 }
 
-.recalc-indicator {
-  position: fixed;
-  left: 200px;
-  ;
-}
-
 .items-editor-container {
   margin-top: 20px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
 }

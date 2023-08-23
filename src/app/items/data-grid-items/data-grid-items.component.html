@@ -1,7 +1,8 @@
 <dx-data-grid [dataSource]="gridItems"
               keyExpr="__storeIndex"
               [repaintChangesOnly]="true"
-              [hoverStateEnabled]="true"
+              [hoverStateEnabled]="false"
+              [focusedRowEnabled]="true"
               (onRowUpdating)="rowUpdating($event)"
               [showBorders]="true">
 
@@ -9,14 +10,17 @@
                [allowUpdating]="true"
                [allowDeleting]="false"
                [allowAdding]="false"
+               [selectTextOnEditStart]="true"
+               [useIcons]="true"
   ></dxo-editing>
 
   <dxo-paging [pageSize]="10"></dxo-paging>
 
   <dxi-column dataField="ordinal" width="50" caption="#" [allowEditing]="false"></dxi-column>
-  <dxi-column dataField="name" caption="Name"></dxi-column>
-  <dxi-column dataField="price" [width]="150" caption="Unit price" format="#,##0.00####" dataType="number"></dxi-column>
-  <dxi-column dataField="amount" [width]="150" caption="Amount" format="#,##0.00####" dataType="number"></dxi-column>
-  <dxi-column dataField="totalPrice" [width]="150" caption="Total price" format="#,##0.00####" dataType="number"></dxi-column>
+  <dxi-column dataField="name" width="150" caption="Name"></dxi-column>
+  <dxi-column dataField="price" width="150" caption="Unit price" format="#,##0.00####" dataType="number"></dxi-column>
+  <dxi-column dataField="amount" width="150" caption="Amount" format="#,##0.00####" dataType="number"></dxi-column>
+  <dxi-column dataField="totalPrice" width="150" caption="Total price" format="#,##0.00####" dataType="number"></dxi-column>
+  <dxi-column dataField="description" caption="Description"></dxi-column>
 
 </dx-data-grid>

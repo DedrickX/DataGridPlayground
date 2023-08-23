@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { DxDataGridModule } from 'devextreme-angular';
@@ -14,7 +14,8 @@ import { FORM_ID } from '../../form-state/state';
     DxDataGridModule
   ],
   templateUrl: './data-grid-items.component.html',
-  styleUrls: ['./data-grid-items.component.scss']
+  styleUrls: ['./data-grid-items.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DataGridItemsComponent implements OnChanges {
 

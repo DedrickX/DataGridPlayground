@@ -10,21 +10,23 @@
   <div id="document-editor">
     <dx-text-box label="Document nr." [ngrxFormControlState]="formState.controls.documentNumber"></dx-text-box>
 
-    <div class="recalc-indicator">
-      <dx-load-indicator [visible]="recalculationInProgress$ | async"></dx-load-indicator>
-    </div>
-
     <h3>Items editor</h3>
-    <dx-select-box label="Items editor variant"
-                   [(value)]="currentItemsEditorVariant"
-                   [items]="itemsEditorVariants"
-                   [hoverStateEnabled]="true"
-                    displayExpr="text"
-                    valueExpr="value"
-                   [width]="300">
-    </dx-select-box>
 
-    <div class="items-editor-container">
+    <div class="flex">
+      <dx-select-box label="Items editor variant"
+                     [(value)]="currentItemsEditorVariant"
+                     [items]="itemsEditorVariants"
+                     [hoverStateEnabled]="true"
+                     displayExpr="text"
+                     valueExpr="value"
+                     [width]="300">
+      </dx-select-box>
+
+      <div class="recalc-indicator">
+        <dx-load-indicator [visible]="recalculationInProgress$ | async"></dx-load-indicator>
+      </div>
+    </div>
+        <div class="items-editor-container">
       <app-simple-items *ngIf="currentItemsEditorVariant === 'simple'"
                         [formState]="formState.controls.items">
       </app-simple-items>
