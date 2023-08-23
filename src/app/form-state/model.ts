@@ -1,6 +1,7 @@
 export interface DocumentModel {
   documentNumber: string;
   items: ItemModel[];
+  finalDocumentText: string;
 }
 
 export interface ItemModel {

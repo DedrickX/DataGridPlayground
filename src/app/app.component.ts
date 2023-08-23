@@ -13,8 +13,11 @@ import { Observable } from 'rxjs';
 import { appComponentActions } from './form-state/app-component-actions';
 import { DocumentModel } from './form-state/model';
 import { documentFormStateSelector, loadInProgressSelector, recalculateInProgressSelector } from './form-state/state';
+import { DataGridFormItemsComponent } from './items/data-grid-form-items/data-grid-form-items.component';
 import { DataGridItemsComponent } from './items/data-grid-items/data-grid-items.component';
 import { SimpleItemsComponent } from './items/simple-items/simple-items.component';
+
+type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +30,7 @@ import { SimpleItemsComponent } from './items/simple-items/simple-items.componen
     NgrxFormsModule,
     SimpleItemsComponent,
     DataGridItemsComponent,
+    DataGridFormItemsComponent,
     DxSelectBoxModule,
     DxLoadPanelModule,
     DxLoadIndicatorModule,
@@ -42,11 +46,12 @@ export class AppComponent implements OnInit {
   protected recalculationInProgress$: Observable<boolean>;
   protected loadInProgress$: Observable<boolean>;
 
-  protected currentItemsEditorVariant: 'simple' | 'dx' = 'dx';
+  protected currentItemsEditorVariant: ItemsEditorVariants = 'dx-form';
 
-  protected itemsEditorVariants: { value: 'simple' | 'dx', text: string }[] = [
+  protected itemsEditorVariants: { value: ItemsEditorVariants, text: string }[] = [
     { value: 'simple', text: 'Simple *ngFor and table' },
-    { value: 'dx', text: 'DxDataGrid, edit mode cell' },
+    { value: 'dx-cell', text: 'DxDataGrid, edit mode cell' },
+    { value: 'dx-form', text: 'DxDataGrid, edit mode form' },
   ];
 
   constructor(

@@ -12,7 +12,7 @@
 
     <h3>Items editor</h3>
 
-    <div class="flex">
+    <div class="items-header">
       <dx-select-box label="Items editor variant"
                      [(value)]="currentItemsEditorVariant"
                      [items]="itemsEditorVariants"
@@ -26,14 +26,23 @@
         <dx-load-indicator [visible]="recalculationInProgress$ | async"></dx-load-indicator>
       </div>
     </div>
-        <div class="items-editor-container">
+
+    <div class="items-editor-container">
       <app-simple-items *ngIf="currentItemsEditorVariant === 'simple'"
                         [formState]="formState.controls.items">
       </app-simple-items>
 
-      <app-data-grid-items *ngIf="currentItemsEditorVariant === 'dx'"
+      <app-data-grid-items *ngIf="currentItemsEditorVariant === 'dx-cell'"
                            [formState]="formState.controls.items">
       </app-data-grid-items>
+
+      <app-data-grid-form-items *ngIf="currentItemsEditorVariant === 'dx-form'"
+                                [formState]="formState.controls.items">
+      </app-data-grid-form-items>
+    </div>
+
+    <div class="document-footer">
+      <dx-text-box label="Final document text" [ngrxFormControlState]="formState.controls.finalDocumentText"></dx-text-box>
     </div>
   </div>
 

@@ -3,6 +3,7 @@ import { DocumentModel, ItemModel } from './model';
 export function getEmptyDocument(): DocumentModel {
   return {
     documentNumber: '',
+    finalDocumentText: '',
     items: []
   }
 }
@@ -24,6 +25,7 @@ export function getMockDocument(id: number): DocumentModel {
     case 1:
       return {
         documentNumber: '2023-01',
+        finalDocumentText: 'This is a mock document 1',
         items: [
           {
             id: 1,
@@ -68,6 +70,7 @@ export function getMockDocument(id: number): DocumentModel {
       const numbers = Array.from(Array(100).keys());
       return {
         documentNumber: '2023-02',
+        finalDocumentText: 'This is a mock document 2',
         items: numbers.map<ItemModel>((_, index) => ({
           id: index + 1,
           ordinal: index + 1,
