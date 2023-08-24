@@ -1,3 +1,8 @@
+<dx-select-box label="Grid editing mode"
+               width="200"
+               [items]="['row', 'form']"
+               [(value)]="gridEditingMode"></dx-select-box>
+
 <dx-data-grid [dataSource]="gridItems"
               keyExpr="__storeIndex"
               [repaintChangesOnly]="true"
@@ -7,7 +12,7 @@
               (onRowUpdated)="rowUpdated($event)"
               [showBorders]="true">
 
-  <dxo-editing mode="form"
+  <dxo-editing [mode]="gridEditingMode"
                [allowUpdating]="true"
                [allowDeleting]="false"
                [allowAdding]="false"

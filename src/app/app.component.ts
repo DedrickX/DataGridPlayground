@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 import { appComponentActions } from './form-state/app-component-actions';
 import { DocumentModel } from './form-state/model';
 import { documentFormStateSelector, loadInProgressSelector, recalculateInProgressSelector } from './form-state/state';
+import { DataGridCustomEditorComponent } from './items/data-grid-custom-editor/data-grid-custom-editor.component';
 import { DataGridFormItemsComponent } from './items/data-grid-form-items/data-grid-form-items.component';
 import {
   DataGridInternalRecalcItemsComponent
@@ -20,7 +21,7 @@ import {
 import { DataGridItemsComponent } from './items/data-grid-items/data-grid-items.component';
 import { SimpleItemsComponent } from './items/simple-items/simple-items.component';
 
-type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form' | 'dx-internal-recalc';
+type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form' | 'dx-internal-recalc' | 'dx-custom-editor';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +36,7 @@ type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form' | 'dx-internal-recal
     DataGridItemsComponent,
     DataGridFormItemsComponent,
     DataGridInternalRecalcItemsComponent,
+    DataGridCustomEditorComponent,
     DxSelectBoxModule,
     DxLoadPanelModule,
     DxLoadIndicatorModule,
@@ -50,13 +52,14 @@ export class AppComponent implements OnInit {
   protected recalculationInProgress$: Observable<boolean>;
   protected loadInProgress$: Observable<boolean>;
 
-  protected currentItemsEditorVariant: ItemsEditorVariants = 'dx-internal-recalc';
+  protected currentItemsEditorVariant: ItemsEditorVariants = 'dx-custom-editor';
 
   protected itemsEditorVariants: { value: ItemsEditorVariants, text: string }[] = [
     { value: 'simple', text: 'Simple *ngFor and table' },
     { value: 'dx-cell', text: 'DxDataGrid, edit mode cell' },
     { value: 'dx-form', text: 'DxDataGrid, edit mode form' },
     { value: 'dx-internal-recalc', text: 'DxDataGrid, recalc logic in grid rows' },
+    { value: 'dx-custom-editor', text: 'DxDataGrid, custom modal editor' },
   ];
 
   constructor(

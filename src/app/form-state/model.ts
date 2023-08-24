@@ -13,3 +13,7 @@ export interface ItemModel {
   totalPrice: number;
   description: string;
 }
+
+export interface GridItemModel extends ItemModel {
+  __storeIndex: number;
+}

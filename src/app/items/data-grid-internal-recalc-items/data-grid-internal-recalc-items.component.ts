@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { DxDataGridModule } from 'devextreme-angular';
+import { DxDataGridModule, DxSelectBoxModule } from 'devextreme-angular';
 import {
   DxiColumnModule,
   DxiItemModule,
@@ -10,14 +10,23 @@ import {
   DxoPagingModule
 } from 'devextreme-angular/ui/nested';
 import { FormArrayState, SetValueAction } from 'ngrx-forms';
-import { ItemModel } from '../../form-state/model';
+import { GridItemModel, ItemModel } from '../../form-state/model';
 import { FORM_ID } from '../../form-state/state';
 import { RecalculateApiService } from '../../recalculate-api-service/recalculate-api.service';
 
 @Component({
   selector: 'app-data-grid-internal-recalc-items',
   standalone: true,
-  imports: [CommonModule, DxDataGridModule, DxiColumnModule, DxiItemModule, DxoEditingModule, DxoFormModule, DxoPagingModule],
+  imports: [
+    CommonModule,
+    DxDataGridModule,
+    DxiColumnModule,
+    DxiItemModule,
+    DxoEditingModule,
+    DxoFormModule,
+    DxoPagingModule,
+    DxSelectBoxModule,
+  ],
   templateUrl: './data-grid-internal-recalc-items.component.html',
   styleUrls: ['./data-grid-internal-recalc-items.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -27,6 +36,8 @@ export class DataGridInternalRecalcItemsComponent implements OnChanges {
   @Input() formState: FormArrayState<ItemModel>;
 
   protected gridItems: GridItemModel[] = [];
+
+  protected gridEditingMode = 'row';
 
   constructor(
     private store: Store,
@@ -88,8 +99,4 @@ export class DataGridInternalRecalcItemsComponent implements OnChanges {
     newData.price = result.price;
     return newData;
   }
-}
-
-export interface GridItemModel extends ItemModel {
-  __storeIndex: number;
 }

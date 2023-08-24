@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { DxDataGridModule } from 'devextreme-angular';
 import { FormArrayState, SetValueAction } from 'ngrx-forms';
-import { ItemModel } from '../../form-state/model';
+import { GridItemModel, ItemModel } from '../../form-state/model';
 import { FORM_ID } from '../../form-state/state';
 
 @Component({
@@ -47,8 +47,4 @@ export class DataGridFormItemsComponent implements OnChanges {
     }
   }
 
-}
-
-export interface GridItemModel extends ItemModel {
-  __storeIndex: number;
 }

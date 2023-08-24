@@ -43,6 +43,10 @@
       <app-data-grid-internal-recalc-items *ngIf="currentItemsEditorVariant === 'dx-internal-recalc'"
                                            [formState]="formState.controls.items">
       </app-data-grid-internal-recalc-items>
+
+      <app-data-grid-custom-editor *ngIf="currentItemsEditorVariant === 'dx-custom-editor'"
+                                   [formState]="formState.controls.items">
+      </app-data-grid-custom-editor>
     </div>
 
     <div class="document-footer">
