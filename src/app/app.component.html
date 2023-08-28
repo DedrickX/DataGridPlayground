@@ -1,13 +1,15 @@
-<h2>Load document</h2>
+<h2>Document editor</h2>
+
+<h3>Load document</h3>
 <div class="loaders">
   <dx-button type="default" text="Empty document" (onClick)="loadEmptyDocument()"></dx-button>
   <dx-button type="default" text="Small document" (onClick)="loadDocumentById(1)"></dx-button>
   <dx-button type="default" text="Large document" (onClick)="loadDocumentById(2)"></dx-button>
 </div>
 
-<h2>Document editor</h2>
 <ng-container *ngIf="formState$ | async as formState">
   <div id="document-editor">
+    <h3>Header</h3>
     <dx-text-box label="Document nr." [ngrxFormControlState]="formState.controls.documentNumber"></dx-text-box>
 
     <h3>Items editor</h3>
@@ -47,9 +49,14 @@
       <app-data-grid-custom-editor *ngIf="currentItemsEditorVariant === 'dx-custom-editor'"
                                    [formState]="formState.controls.items">
       </app-data-grid-custom-editor>
+
+      <app-data-grid-side-editor *ngIf="currentItemsEditorVariant === 'dx-side-editor'"
+                                 [formState]="formState.controls.items">
+      </app-data-grid-side-editor>
     </div>
 
     <div class="document-footer">
+      <h3>Footer</h3>
       <dx-text-box label="Final document text" [ngrxFormControlState]="formState.controls.finalDocumentText"></dx-text-box>
     </div>
   </div>

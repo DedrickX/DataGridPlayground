@@ -22,6 +22,7 @@
 
   <dx-popup *ngIf="focusedRowState$ | async as focusedRowState"
             [(visible)]="editorVisible"
+            (onShown)="onEditorShown($event)"
             (onHidden)="onEditorHidden()"
             height="auto"
             width="500"

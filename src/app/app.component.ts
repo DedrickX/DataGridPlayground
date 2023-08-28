@@ -19,9 +19,10 @@ import {
   DataGridInternalRecalcItemsComponent
 } from './items/data-grid-internal-recalc-items/data-grid-internal-recalc-items.component';
 import { DataGridItemsComponent } from './items/data-grid-items/data-grid-items.component';
+import { DataGridSideEditorComponent } from './items/data-grid-side-editor/data-grid-side-editor.component';
 import { SimpleItemsComponent } from './items/simple-items/simple-items.component';
 
-type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form' | 'dx-internal-recalc' | 'dx-custom-editor';
+type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form' | 'dx-internal-recalc' | 'dx-custom-editor' | 'dx-side-editor';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +38,7 @@ type ItemsEditorVariants = 'simple' | 'dx-cell' | 'dx-form' | 'dx-internal-recal
     DataGridFormItemsComponent,
     DataGridInternalRecalcItemsComponent,
     DataGridCustomEditorComponent,
+    DataGridSideEditorComponent,
     DxSelectBoxModule,
     DxLoadPanelModule,
     DxLoadIndicatorModule,
@@ -52,7 +54,7 @@ export class AppComponent implements OnInit {
   protected recalculationInProgress$: Observable<boolean>;
   protected loadInProgress$: Observable<boolean>;
 
-  protected currentItemsEditorVariant: ItemsEditorVariants = 'dx-custom-editor';
+  protected currentItemsEditorVariant: ItemsEditorVariants = 'dx-side-editor';
 
   protected itemsEditorVariants: { value: ItemsEditorVariants, text: string }[] = [
     { value: 'simple', text: 'Simple *ngFor and table' },
@@ -60,6 +62,7 @@ export class AppComponent implements OnInit {
     { value: 'dx-form', text: 'DxDataGrid, edit mode form' },
     { value: 'dx-internal-recalc', text: 'DxDataGrid, recalc logic in grid rows' },
     { value: 'dx-custom-editor', text: 'DxDataGrid, custom modal editor' },
+    { value: 'dx-side-editor', text: 'DxDataGrid, side editor' },
   ];
 
   constructor(

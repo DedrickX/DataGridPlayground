@@ -9,7 +9,6 @@ import {
   DxPopupModule,
   DxTextBoxModule
 } from 'devextreme-angular';
-import { DxiButtonModule } from 'devextreme-angular/ui/nested';
 import dxDataGrid, { KeyDownEvent } from "devextreme/ui/data_grid"
 import { FormArrayState, FormGroupState, NgrxFormsModule } from 'ngrx-forms';
 import { BehaviorSubject } from 'rxjs';
@@ -74,7 +73,6 @@ export class DataGridCustomEditorComponent implements OnChanges {
   }
 
   onKeyDown($event: KeyDownEvent) {
-    console.log('>>> onKeyDown', $event);
     if ($event.event.key === 'Enter') {
       this.tryToShowEditor();
     }
@@ -96,5 +94,10 @@ export class DataGridCustomEditorComponent implements OnChanges {
 
   onEditorHidden() {
     this.gridComponent?.focus();
+  }
+
+  onEditorShown(e: any) {
+    console.log('>>> onEditorShown', e);
+    e.component?.focus();
   }
 }

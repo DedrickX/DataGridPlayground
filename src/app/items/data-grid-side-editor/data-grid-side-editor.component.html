@@ -1,0 +1,50 @@
+<div id="grid-editor" *ngIf="viewModel$ | async as vm">
+
+  <dx-data-grid [dataSource]="gridItems"
+                keyExpr="__storeIndex"
+                (onInitialized)="onInitialized($event)"
+                [focusedRowKey]="vm.focusedRowKey"
+                (focusedRowKeyChange)="onFocusedRowKeyChange($event)"
+                (onCellDblClick)="onCellDblClick($event)"
+                (onKeyDown)="onKeyDown($event)"
+                [repaintChangesOnly]="true"
+                [hoverStateEnabled]="false"
+                [focusedRowEnabled]="true"
+                [autoNavigateToFocusedRow]="true"
+                [height]="450"
+                [showBorders]="true"
+                [paging]="{ enabled: false }">
+
+
+    <dxi-column dataField="ordinal" width="50" caption="#"></dxi-column>
+    <dxi-column dataField="name" width="150" caption="Name"></dxi-column>
+    <dxi-column dataField="price" width="150" caption="Unit price" format="#,##0.00####" dataType="number"
+                [visible]="!vm.sideEditorVisible"></dxi-column>
+    <dxi-column dataField="amount" width="150" caption="Amount" format="#,##0.00####" dataType="number"
+                [visible]="!vm.sideEditorVisible"></dxi-column>
+    <dxi-column dataField="totalPrice" width="150" caption="Total price" format="#,##0.00####" dataType="number"></dxi-column>
+    <dxi-column dataField="description" caption="Description" [visible]="!vm.sideEditorVisible"></dxi-column>
+  </dx-data-grid>
+
+
+  <div class="editor" *ngIf="vm.focusedRow && vm.sideEditorVisible">
+    <h3>Item editor</h3>
+
+    <dx-number-box label="Item no." [ngrxFormControlState]="vm.focusedRow.controls.ordinal" [readOnly]="true"></dx-number-box>
+    <dx-text-box #firstEditor label="Name" [ngrxFormControlState]="vm.focusedRow.controls.name"></dx-text-box>
+    <dx-number-box label="Unit price" [ngrxFormControlState]="vm.focusedRow.controls.price"></dx-number-box>
+    <dx-number-box label="Amount" [ngrxFormControlState]="vm.focusedRow.controls.amount"></dx-number-box>
+    <dx-number-box label="TotalPrice" [ngrxFormControlState]="vm.focusedRow.controls.totalPrice"></dx-number-box>
+    <dx-text-box label="Description" [ngrxFormControlState]="vm.focusedRow.controls.description"></dx-text-box>
+
+    <div class="navigation">
+      <div>
+        <dx-button text="< Prev" [tabIndex]="1" (onClick)="goto(-1)"></dx-button>
+        <dx-button text="Next >" [tabIndex]="0" (onClick)="goto(1)"></dx-button>
+      </div>
+      <dx-button text="Close" (onClick)="hideEditor()"></dx-button>
+    </div>
+  </div>
+
+</div>
+

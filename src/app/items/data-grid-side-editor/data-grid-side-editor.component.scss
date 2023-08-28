@@ -1,0 +1,19 @@
+#grid-editor {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  dx-data-grid {
+    flex: 1;
+  }
+
+  .editor {
+    flex: 1;
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
