@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import {
@@ -6,7 +13,7 @@ import {
   DxButtonModule,
   DxDataGridModule,
   DxNumberBoxModule,
-  DxPopupModule,
+  DxPopupModule, DxTextBoxComponent,
   DxTextBoxModule
 } from 'devextreme-angular';
 import dxDataGrid, { KeyDownEvent } from "devextreme/ui/data_grid"
@@ -41,6 +48,8 @@ export class DataGridCustomEditorComponent implements OnChanges {
   protected focusedRowKey: number | null = null;
   protected editorVisible = false;
   protected focusedRowState$ = new BehaviorSubject<FormGroupState<ItemModel | null>>(null);
+
+  @ViewChild('firstEditor', { static: false }) firstEditorTextBox: DxTextBoxComponent | null = null;
 
   constructor(
     private store: Store,
@@ -97,7 +106,6 @@ export class DataGridCustomEditorComponent implements OnChanges {
   }
 
   onEditorShown(e: any) {
-    console.log('>>> onEditorShown', e);
-    e.component?.focus();
+    this.firstEditorTextBox?.instance.focus();
   }
 }

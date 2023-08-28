@@ -30,12 +30,13 @@
             [hideOnOutsideClick]="true">
     <h3>Item editor</h3>
     <dx-number-box label="Item no." [ngrxFormControlState]="focusedRowState.controls.ordinal" [readOnly]="true"></dx-number-box>
-    <dx-text-box label="Name" [ngrxFormControlState]="focusedRowState.controls.name"></dx-text-box>
+    <dx-text-box #firstEditor label="Name" [ngrxFormControlState]="focusedRowState.controls.name"></dx-text-box>
     <dx-number-box label="Unit price" [ngrxFormControlState]="focusedRowState.controls.price"></dx-number-box>
     <dx-number-box label="Amount" [ngrxFormControlState]="focusedRowState.controls.amount"></dx-number-box>
     <dx-number-box label="TotalPrice" [ngrxFormControlState]="focusedRowState.controls.totalPrice"></dx-number-box>
     <dx-text-box label="Description" [ngrxFormControlState]="focusedRowState.controls.description"></dx-text-box>
 
+    <dx-button style="margin-top: 20px;" text="Close" type="default" (onClick)="editorVisible=false"></dx-button>
   </dx-popup>
 
 

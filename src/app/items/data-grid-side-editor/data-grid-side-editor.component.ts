@@ -119,7 +119,6 @@ export class DataGridSideEditorComponent implements OnChanges {
       return;
     }
     const nextIndex = this.gridComponent.getRowIndexByKey(this.focusedRowKey$.value) + movement;
-    console.log('>>> nextIndex', nextIndex);
     const nextRowKey = this.gridComponent.getKeyByRowIndex(nextIndex);
     if (nextRowKey !== undefined) {
       this.focusedRowKey$.next(nextRowKey);
