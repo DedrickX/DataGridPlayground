@@ -27,9 +27,7 @@
   </dx-data-grid>
 
 
-  <div class="editor" *ngIf="vm.focusedRow && vm.sideEditorVisible">
-    <h3>Item editor</h3>
-
+  <div class="editor" *ngIf="vm.focusedRow && vm.sideEditorVisible" (keydown)="onEditorKeyDown($event)">
     <dx-number-box label="Item no." [ngrxFormControlState]="vm.focusedRow.controls.ordinal" [readOnly]="true"></dx-number-box>
     <dx-text-box #firstEditor label="Name" [ngrxFormControlState]="vm.focusedRow.controls.name"></dx-text-box>
     <dx-number-box label="Unit price" [ngrxFormControlState]="vm.focusedRow.controls.price"></dx-number-box>

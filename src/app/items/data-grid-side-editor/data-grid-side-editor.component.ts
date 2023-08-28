@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges, Vi
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import {
+  DxBoxModule,
   DxButtonModule,
   DxDataGridModule,
   DxNumberBoxModule,
@@ -26,6 +27,7 @@ import { GridItemModel, ItemModel } from '../../form-state/model';
     DxiColumnModule,
     DxoPagingModule,
     DxButtonModule,
+    DxBoxModule,
   ],
   selector: 'app-data-grid-side-editor',
   standalone: true,
@@ -101,6 +103,7 @@ export class DataGridSideEditorComponent implements OnChanges {
 
   hideEditor() {
     this.editorVisible$.next(false);
+    // this.gridComponent.focus();
   }
 
   updateFocusedRowState(): void {
@@ -122,6 +125,12 @@ export class DataGridSideEditorComponent implements OnChanges {
       this.focusedRowKey$.next(nextRowKey);
       this.updateFocusedRowState();
       this.firstEditorTextBox?.instance.focus();
+    }
+  }
+
+  onEditorKeyDown(e: KeyboardEvent) {
+    if (e.key === 'Escape') {
+      this.hideEditor();
     }
   }
 }
