@@ -61,6 +61,8 @@ export class DataGridSideEditorComponent implements OnChanges {
           ...item
         }));
     }
+
+    this.updateFocusedRowState();
   }
 
   get viewModel$(): Observable<ViewModel> {
