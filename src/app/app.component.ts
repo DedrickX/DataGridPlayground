@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
   protected recalculationInProgress$: Observable<boolean>;
   protected loadInProgress$: Observable<boolean>;
 
-  protected currentItemsEditorVariant: ItemsEditorVariants = 'dx-custom-editor';
+  protected currentItemsEditorVariant: ItemsEditorVariants = 'dx-cell';
 
   protected itemsEditorVariants: { value: ItemsEditorVariants, text: string }[] = [
     { value: 'simple', text: 'Simple *ngFor and table' },
